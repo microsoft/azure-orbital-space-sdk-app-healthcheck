@@ -1,0 +1,59 @@
+// launch.json contains information needed for the debugger to attach to  processes
+// See https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations
+// for documentation about how to create and manage configurations
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "DotNet - Debug App",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/.git/spacefx-dev/dotnet/dotnet",
+            "preLaunchTask": "deploy-debugshim-dotnet",
+            "args": [
+                "${workspaceFolder}/dotnet_app/bin/Debug/net6.0/app-healthcheck.dll"
+            ],
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development"
+            },
+            "cwd": "${workspaceFolder}/dotnet_app",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceFolder}/dotnet_app",
+                "pipeProgram": "bash",
+                "pipeArgs": [
+                    "-c \" kubectl exec --stdin deploy/spacesdk-client -n payload-app -c spacesdk-client -- "
+                ],
+                "quoteArgs": false,
+                "debuggerPath": "${workspaceFolder}/.git/spacefx-dev/vsdbg/vsdbg"
+            },
+            "postDebugTask": "reset-debugshim-client",
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1
+            },
+            "requireExactSource": true
+        },
+        {
+            "name": "Python - Debug App",
+            "type": "python",
+            "request": "attach",
+            "preLaunchTask": "deploy-debugshim-python",
+            "postDebugTask": "reset-debugshim",
+            "connect": {
+                "host": "localhost",
+                "port": 5678,
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "${workspaceFolder}"
+                }
+            ],
+            "justMyCode": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
