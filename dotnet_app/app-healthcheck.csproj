@@ -21,4 +21,13 @@
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
   </PropertyGroup>
+  <PropertyGroup>
+    <LowercaseConfiguration>$([System.String]::Copy('$(Configuration)').ToLower())</LowercaseConfiguration>
+    <FullOutputPath>$(OutputPath)</FullOutputPath>
+  </PropertyGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Message Importance="high" Text="Output path: $(OutputPath)" />
+    <Message Importance="high" Text="Project Dir: $(MSBuildProjectDirectory)" />
+    <Exec Command="bash $([System.IO.Directory]::GetParent($(MSBuildProjectDirectory)))/.vscode/projectPostBuild.sh --$(LowercaseConfiguration) --target-dir $(OutputPath)" />
+  </Target>
 </Project>
