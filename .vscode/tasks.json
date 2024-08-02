@@ -25,7 +25,7 @@
                 "${DEBUG_SHIM}",
                 "--disable_plugin_configs",
                 "--python_file",
-                "${workspaceFolder}/python_app/main.py",
+                "${workspaceFolder}/python-src/main.py",
                 "--port",
                 "5678"
             ],
@@ -60,7 +60,7 @@
                 "--debug_shim",
                 "${DEBUG_SHIM}",
                 "--python_file",
-                "${workspaceFolder}/python_app/main.py",
+                "${workspaceFolder}/python-src/main.py",
                 "--port",
                 "5678"
             ],
