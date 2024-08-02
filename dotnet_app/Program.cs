@@ -2,8 +2,7 @@ namespace AppHealthcheck {
     public class Program {
         private static Client Client = new Client();
         private static ILogger Logger => Client.Logger;
-
-        public static void Main() {
+        public static async Task Main() {
             Client.Build();
             List<Exception> exceptions = new List<Exception>();
 
@@ -11,23 +10,22 @@ namespace AppHealthcheck {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            try {
-                HealthChecks.HeartBeats heartBeats = new HealthChecks.HeartBeats(Client);
-                heartBeats.RunTests();
-            } catch (Exception ex) {
-                Logger.LogError("HealthChecks.HeartBeats failed: " + ex.Message);
-                exceptions.Add(ex);
+            var healthCheckServices = new List<Models.IHealthCheckService>{
+                new HealthChecks.HeartBeats(Client),
+                new HealthChecks.LoggingService(Client),
+                new HealthChecks.PositionService(Client),
+                new HealthChecks.LinkService(Client),
+                new HealthChecks.SensorService(Client)
+            };
+
+            foreach (var service in healthCheckServices) {
+                try {
+                    await service.RunTests();
+                } catch (Exception ex) {
+                    Logger.LogError($"{service.GetType().Name} failed: {ex.Message}");
+                    exceptions.Add(ex);
+                }
             }
-
-
-            try {
-                HealthChecks.LoggingService loggingService = new HealthChecks.LoggingService(Client);
-                loggingService.RunTests();
-            } catch (Exception ex) {
-                Logger.LogError("HealthChecks.LoggingService failed: " + ex.Message);
-                exceptions.Add(ex);
-            }
-
 
             // Stop the stop watch and output the run time
             stopwatch.Stop();

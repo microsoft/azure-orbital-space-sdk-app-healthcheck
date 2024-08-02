@@ -16,11 +16,11 @@
             "env": {
                 "DOTNET_ENVIRONMENT": "Development"
             },
-            "cwd": "${workspaceFolder}/dotnet_app",
+            "cwd": "${workspaceFolder}/dotnet_app/bin/Debug/net6.0",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {
-                "pipeCwd": "${workspaceFolder}/dotnet_app",
+                "pipeCwd": "${workspaceFolder}/dotnet_app/bin/Debug/net6.0",
                 "pipeProgram": "bash",
                 "pipeArgs": [
                     "-c \" kubectl exec --stdin deploy/app-healthcheck -n payload-app -c app-healthcheck -- "
