@@ -5,7 +5,7 @@
     "version": "2.0.0",
     "options": {
         "env": {
-            "DEBUG_SHIM_HOST": "app-healthcheck",
+            "DEBUG_SHIM": "app-healthcheck",
             "APP_WORKING_DIR": "/workspace/app-healthcheck"
         }
     },
@@ -22,13 +22,12 @@
             "args": [
                 "/spacefx-dev/debugShim-deploy.sh",
                 "--debug_shim",
-                "${DEBUG_SHIM_CLIENT}",
+                "${DEBUG_SHIM}",
                 "--disable_plugin_configs",
                 "--python_file",
                 "${workspaceFolder}/python_app/main.py",
                 "--port",
-                "5678",
-                "--disable_plugin_configs"
+                "5678"
             ],
             "presentation": {
                 "echo": true,
@@ -59,7 +58,7 @@
             "args": [
                 "/spacefx-dev/debugShim-deploy.sh",
                 "--debug_shim",
-                "${DEBUG_SHIM_HOST}",
+                "${DEBUG_SHIM}",
                 "--python_file",
                 "${workspaceFolder}/python_app/main.py",
                 "--port",
@@ -82,7 +81,7 @@
             "args": [
                 "/spacefx-dev/debugShim-reset.sh",
                 "--debug_shim",
-                "${DEBUG_SHIM_HOST}",
+                "${DEBUG_SHIM}",
                 "--skip-pod-wait"
             ],
             "presentation": {
