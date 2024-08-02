@@ -1,0 +1,9 @@
+[
+    {
+        "AppName": "jetson-test",
+        "NameSpace": "payload-app",
+        "MaxDuration": "300s",
+        "DeployAction": "Apply",
+        "YamlFileContents": "app-healthcheck-dotnet.yaml"
+    }
+]

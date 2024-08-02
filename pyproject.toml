@@ -6,7 +6,7 @@ version = "1.0.0"
 readme = "README.md"
 
 [[tool.poetry.packages]]
-include = "python_app"
+include = "python-src"
 
 [[tool.poetry.include]]
 path = ".protos/datagenerator/planetary_computer"
