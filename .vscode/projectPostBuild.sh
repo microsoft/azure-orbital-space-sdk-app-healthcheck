@@ -64,7 +64,7 @@ while [[ "$#" -gt 0 ]]; do
             shift
             TARGET_DIR=$1
             if [[ ! ${TARGET_DIR:0:1} == "/" ]]; then
-                TARGET_DIR="${CONTAINER_WORKING_DIR}/dotnet_app/${TARGET_DIR}"
+                TARGET_DIR="${CONTAINER_WORKING_DIR}/dotnet-src/${TARGET_DIR}"
             fi
 
             # Remove trailing slash if there is one

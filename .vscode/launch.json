@@ -11,16 +11,16 @@
             "program": "${workspaceFolder}/.git/spacefx-dev/dotnet/dotnet",
             "preLaunchTask": "deploy-debugshim-dotnet",
             "args": [
-                "${workspaceFolder}/dotnet_app/bin/Debug/net6.0/app-healthcheck.dll"
+                "${workspaceFolder}/dotnet-src/bin/Debug/net6.0/app-healthcheck.dll"
             ],
             "env": {
                 "DOTNET_ENVIRONMENT": "Development"
             },
-            "cwd": "${workspaceFolder}/dotnet_app/bin/Debug/net6.0",
+            "cwd": "${workspaceFolder}/dotnet-src/bin/Debug/net6.0",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {
-                "pipeCwd": "${workspaceFolder}/dotnet_app/bin/Debug/net6.0",
+                "pipeCwd": "${workspaceFolder}/dotnet-src/bin/Debug/net6.0",
                 "pipeProgram": "bash",
                 "pipeArgs": [
                     "-c \" kubectl exec --stdin deploy/app-healthcheck -n payload-app -c app-healthcheck -- "

@@ -44,7 +44,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/dotnet_app/app-healthcheck.csproj",
+                "${workspaceFolder}/dotnet-src/app-healthcheck.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
