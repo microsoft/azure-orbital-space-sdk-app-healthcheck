@@ -17,8 +17,11 @@ spec:
     spec:
       containers:
       - name: app-healthcheck
-        image: registry.spacefx.local:5000/app-healthcheck:0.11.0
-        args: ["/workspaces/app-healthcheck/app-healthcheck.dll"]
+        image: registry.spacefx.local:5000/app-healthcheck:0.11.0-nightly
+        args: ["/workspace/app-healthcheck/app-healthcheck.dll"]
         imagePullPolicy: IfNotPresent
         command: ["dotnet"]
-        workingDir: "/workspaces/app-healthcheck"
+        workingDir: "/workspace/app-healthcheck"
+        env:
+        - name: DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
+          value: "1"

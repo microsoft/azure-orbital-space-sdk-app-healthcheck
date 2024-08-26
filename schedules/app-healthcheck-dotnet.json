@@ -1,6 +1,6 @@
 [
     {
-        "AppName": "jetson-test",
+        "AppName": "app-healthcheck-dotnet",
         "NameSpace": "payload-app",
         "MaxDuration": "300s",
         "DeployAction": "Apply",
