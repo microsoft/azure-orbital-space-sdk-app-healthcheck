@@ -36,7 +36,8 @@ Outputs:
         --architecture amd64 \
         --output-dir /var/spacedev/tmp/app-healthcheck \
         --app-version 0.11.0 \
-        --annotation-config azure-orbital-space-sdk-app-healthcheck.yaml
+        --annotation-config azure-orbital-space-sdk-app-healthcheck.yaml \
+        --no-push
     ```
 
 1. Copy the build artifacts to their locations in /var/spacedev
