@@ -21,7 +21,7 @@ Outputs:
     cd -
     ```
 
-1. Build the nuget packages and the container images.  (Note: container images will automatically push)
+1. Build the nuget packages and the container images.
 
     ```bash
     # clone this repo
@@ -48,7 +48,7 @@ Outputs:
     sudo cp ./schedules/* /var/spacedev/yamls/apps/app-healthcheck/
     ```
 
-1. Push the artifacts to the container registry
+1. Push the artifacts to the container registry. Perform the same steps for building in arm64, but replace with `--architecture arm64`.
 
     ```bash
     # Push the yamls and schedules to the container registry
