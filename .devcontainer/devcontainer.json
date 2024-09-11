@@ -9,7 +9,7 @@
 	"workspaceFolder": "/workspace/app-healthcheck",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/app-healthcheck,type=bind,consistency=cached",
 	"features": {
-		"ghcr.io/microsoft/azure-orbital-space-sdk/spacefx-dev:0.11.0": {
+		"ghcr.io/microsoft/azure-orbital-space-sdk/spacefx-dev:0.11.0-nightly": {
 			"app_name": "app-healthcheck",
 			"dev_language": "python",
 			"extra_packages": "libgdal-dev, libgl1",
